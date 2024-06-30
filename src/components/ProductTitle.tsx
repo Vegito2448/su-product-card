@@ -9,13 +9,14 @@ export interface ProductTitleProps {
   style?: CSSProperties;
 }
 
-export const ProductTitle = ({ title, className, style }: ProductTitleProps) => {
-  const { product: { title: titleProvider } } = useContext(ProductContext);
+export const ProductImage = ({ title, className, style }: ProductTitleProps) => {
 
-  title = title || titleProvider;
+  const { product: { title: titleProvider = '' } } = useContext(ProductContext);
+
+  title = title || titleProvider || '';
 
   return <span
-    className={`${styles.productDescription} ${className}`}
+    className={`${styles.productDescription} ${className || ''}`}
     style={style}
   >{title}</span>;
 };
